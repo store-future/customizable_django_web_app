@@ -1,1 +1,106 @@
-<h1>nav template </h1>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            body{
+                font-family : Arial , sans-serif;
+                margin :0 ;
+                padding:0 ;
+            }
+
+            .navbar{
+                background-color:  #333;
+                display : flex ;
+                justify-content: space-between;
+                color : white;
+                padding : 10px 20px ;
+
+            }
+
+            .navbar-left,
+            .navbar-middle,
+            .navbar-right {
+              display: flex;
+              align-items: center;
+            } 
+
+            .logo {
+                width: 40px;
+                height: 40px;
+                margin-right: 10px;
+              }
+              
+            .brand-name {
+                font-size: 2em;
+              }
+
+            .search-bar {
+                padding: 5px;
+                font-size: 1em;
+                width : 22rem;
+                /* margin-right : 1rem;  */
+              }
+            
+            .btn {
+                background-color: #555;
+                color: white;
+                border: none;
+                padding: 10px 15px;
+                margin-left: 10px;
+                cursor: pointer;
+              }
+
+            .btn:hover {
+                background-color: #777;
+              }
+        </style>
+    </head>
+
+
+    <body>
+
+        <div class = "navbar">
+            <div class = "navbar-left">
+                <a href="/">
+                    {% comment %} <img src="/" alt="Logo" class="logo" /> {% endcomment %}
+                    <span class="brand-name">LOGO</span>
+                </a>
+            </div>
+            <div class = "navbar-middle">
+                <form action = "/" >
+                    {% csrf_token %}
+                    <input type="text" class = "search-bar" placeholder="Search..." name = "search-bar">
+                    <button type = "submit" class = "btn">Search</button>
+                </form>
+            </div>
+            <div class = "navbar-right">
+                Login/Logut
+
+                {% comment %} {% if user.is_authenticated %}
+                <button class="btn"><a href = "logout/" >Logout</a></button>
+                {% else %}
+                <button class="btn"><a href = "signup/" >SignUp</a></button>
+                <button class="btn"><a href = "login/" >Login</a></button>
+                {% endif %} {% endcomment %}
+            </div>
+
+
+            {% block content %}
+
+            {% endblock content %}
+            
+        </div>
+        
+        <script src="" async defer></script>
+    </body>
+</html>
